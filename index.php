@@ -1,5 +1,5 @@
 <?php 
-
+    
     require_once "Router.php";
     require_once "DB/Connection.php";
     require_once "models/User.php";

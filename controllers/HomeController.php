@@ -12,6 +12,17 @@ class HomeController{
         return $template->render();
     }
 
-    public function index(){
+    public function check(){
+        try{
+            $user = new User();
+            $user->setEmail($_POST['email']);
+            $user->setPassword($_POST['password']);
+            $user->validate();
+
+            header('Location: http://localhost:8080/Treinamento2020/user/index');
+        }
+        catch(\Exception $e){
+            header('Location: http://localhost:8080/Treinamento2020/');
+        }      
     }
 }

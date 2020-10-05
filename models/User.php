@@ -1,5 +1,7 @@
 <?php
 
+use DB\Connection;
+
 class User{
     private $id;
     private $name;
@@ -7,11 +9,39 @@ class User{
     private $type;
     private $password;
 
-    public function __construct($id, $name, $email, $type){
+    /*public function __construct($id, $name, $email, $type){
         $this->id = $id;
         $this->name = $name;
         $this->email = $email;
         $this->type = $type;
+    }*/
+
+    public function validate(){
+        $connection = Connection::getConnection();
+        
+        $sql = 'SELECT * FROM users WHERE email = :email';
+
+        $stmt = $connection->prepare($sql);
+        $stmt->bindValue(':email', $this->email);
+        $stmt->execute();
+
+        if($stmt->rowCount()){
+            $result = $stmt->fetch();
+        
+
+            if($result['password'] === $this->password){
+                $_SESSION['user'] = array(
+                    'id_user' => $result['id'], 
+                    'username' => $result['name']
+                );
+
+                return true;
+            }
+
+    
+        }
+
+        throw new \Exception('Login failed');
     }
 
     public static function find($email, $password){
