@@ -14,8 +14,8 @@ class HomeController{
 
     public function check(){
         try{
-            $user = new User();
-            $user->setEmail($_POST['email']);
+            $user = new User($_POST['name'], $_POST['email']);
+            //$user->setEmail($_POST['email']);
             $user->setPassword($_POST['password']);
             $user->validate();
 

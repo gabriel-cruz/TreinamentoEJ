@@ -9,12 +9,12 @@ class User{
     private $type;
     private $password;
 
-    /*public function __construct($id, $name, $email, $type){
+    public function __construct($id, $name, $email /*, $type*/){
         $this->id = $id;
         $this->name = $name;
         $this->email = $email;
-        $this->type = $type;
-    }*/
+        //$this->type = $type;
+    }
 
     public function validate(){
         $connection = Connection::getConnection();
@@ -37,24 +37,50 @@ class User{
 
                 return true;
             }
-
     
         }
 
         throw new \Exception('Login failed');
     }
 
+    public static function all(){
+        $connection = Connection::getConnection();
+
+        $sql = "SELECT * FROM users";
+
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
+        
+        $users = [];
+        if($stmt->rowCount()){
+            for($i = 0; $i < $stmt->rowCount(); $i++){
+                $user = $stmt->fetch();
+                $users[$i] = new User($user['id'], $user['name'], $user['email']);
+               
+            }
+     
+            return $users;
+        }
+
+        return false;
+    }
+
+    
+    public static function create($name, $email, $password, $password_confirmation){
+        $connection = Connection::getConnection();
+
+        $sql = "INSERT INTO users (name, email, password) values ('{$name}', '{$email}', '{$password}')";
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
+    }
+
     public static function find($email, $password){
     }
 
     public static function get($id){
+        
     }
 
-    public static function create($name, $email, $type, $password, $password_confirmation){
-    }
-
-    public static function all(){
-    }
 
     public static function delete($id){
     }

@@ -1,5 +1,7 @@
 <?php 
 
+
+
 session_start();
 
 class UserController{
@@ -16,6 +18,16 @@ class UserController{
         return $template->render($parameters);
     }
 
+    public function renderIndex(){
+        $loader = new \Twig\Loader\FilesystemLoader('views/admin/user');
+        $twig = new \Twig\Environment($loader, [
+            'auto_reload' => true,
+        ]);
+        $template =$twig->load('index.php');
+
+        return $template->render();
+    }
+
     public static function logout(){
         unset($_SESSION['user']);
         session_destroy();
@@ -23,10 +35,30 @@ class UserController{
         header('Location: http://localhost:8080/Treinamento2020/');
     }
 
+    public static function all(){
+        
+        return User::all();
+    }
+
     public function create(){
+        $loader = new \Twig\Loader\FilesystemLoader('views/admin/user');
+        $twig = new \Twig\Environment($loader, [
+            'auto_reload' => true,
+        ]);
+        $template =$twig->load('create.php');
+
+        return $template->render();
     }
 
     public function store(){
+        if($_POST["password"] == $_POST["password_confirmation"]){
+            User::create($_POST["name"], $_POST["email"], $_POST["password"], $_POST["password_confirmation"]);
+            header("Location: http://localhost:8080/Treinamento2020/user/index");
+        }
+
+        else{
+            header("Location: http://localhost:8080/Treinamento2020/user/create");
+        }
     }
 
     public function edit($id){
@@ -41,8 +73,7 @@ class UserController{
     public function delete($id){
     }
 
-    public static function all(){
-    }
+    
     
     public function check(){
     }
