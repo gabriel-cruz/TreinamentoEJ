@@ -74,19 +74,30 @@ class User{
         $stmt->execute();
     }
 
-    public static function find($email, $password){
-    }
+    public static function update($id, $name, $email, $password){
+        $connection =  Connection::getConnection();
 
-    public static function get($id){
-        
+        $sql = "update users set name = '{$name}', email = '{$email}', password = '{$password}' where id = '{$id}'";
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
     }
-
 
     public static function delete($id){
+        $connection =  Connection::getConnection();
+
+        $sql = "delete from users where id = '{$id}'";
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
     }
 
-    public static function update($id, $name, $email, $type, $password, $password_confirmation){
+    public static function find($email, $password){
+        $connection =  Connection::getConnection();
+
+        $sql = "select * from users where id = '{$id}'";
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
     }
+
 
     public function getId(){
         return $this->id;
