@@ -8,7 +8,7 @@
 
 
 <?php
-    $users = UserController::all();
+    $users = User::all();
     foreach ($users as $user) {
 ?>
 

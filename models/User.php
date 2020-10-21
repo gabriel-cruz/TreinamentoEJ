@@ -44,25 +44,25 @@ class User{
     }
 
     public static function all(){
-        $connection = Connection::getConnection();
+        $connection = Connection::getConnection2();
 
         $sql = "SELECT * FROM users";
 
-        $stmt = $connection->prepare($sql);
-        $stmt->execute();
+        $stmt = mysqli_query($connection, $sql);
         
-        $users = [];
-        if($stmt->rowCount()){
-            for($i = 0; $i < $stmt->rowCount(); $i++){
-                $user = $stmt->fetch();
+        if(mysqli_num_rows($stmt) >= 1){
+            for($i = 0; $i < mysqli_num_rows($stmt); $i++){
+                $user = mysqli_fetch_assoc($stmt);
                 $users[$i] = new User($user['id'], $user['name'], $user['email']);
                
             }
      
             return $users;
+        }else{
+            return false;
         }
 
-        return false;
+        mysqli_close($connection);
     }
 
     

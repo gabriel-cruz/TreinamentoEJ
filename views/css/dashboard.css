@@ -1,0 +1,9 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.nav-link a{
+    text-align: right;
+    float: right;
+}

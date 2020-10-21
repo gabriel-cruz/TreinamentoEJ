@@ -14,4 +14,12 @@ abstract class Connection{
         return self::$connection;
     }
 
+    public static function getConnection2(){ 
+        if(!self::$connection){
+            self::$connection = mysqli_connect("localhost", "root", "", "treinamento");
+        }
+
+        return self::$connection;
+    }
+
 }
