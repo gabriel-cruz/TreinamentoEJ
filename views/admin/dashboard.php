@@ -9,7 +9,7 @@
     <head>
         <title>Dashboard</title>
         <link rel="stylesheet" type="text/css" href="http://localhost:8080/Treinamento2020/views/css/dashboard.css">
-        <link rel="stylesheet" type="text/css" href="views/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8080/Treinamento2020/views/bootstrap/css/bootstrap.min.css">
         <meta name="viewport" content="width=device-width, initial-scale">
 
     </head>
@@ -33,7 +33,7 @@
                 </li>
                 <div class="content_area">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sair</a>
+                        <a class="nav-link" href="/Treinamento2020/user/logout">Sair</a>
                     </li>
                 </div>
                 </ul>
