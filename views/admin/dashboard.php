@@ -23,13 +23,13 @@
                     <a class="nav-link" >Bem vindo, {{username}} <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Listagem de Usuários</a>
+                    <a class="nav-link" href="/Treinamento2020/user/all">Listagem de Usuários</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cadastrar Novo Usuário</a>
+                    <a class="nav-link" href="/Treinamento2020/user/create">Cadastrar Novo Usuário</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Meu Perfil</a>
+                    <a class="nav-link" href="/Treinamento2020/user/profile">Meu Perfil</a>
                 </li>
                 <div class="content_area">
                     <li class="nav-item">
