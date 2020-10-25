@@ -5,7 +5,9 @@
     UserController::verifyLogin();
     UserController::verifyAdmin();
 ?>
-
+<head>
+    <title>Dashboard</title>
+</head>
 
 <?php
     $users = User::all();

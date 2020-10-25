@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="http://localhost:8080/Treinamento2020/views/css/form.css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
+    <title>Cadastrar</title>
 </head>
     <body>
         <form action="/Treinamento2020/user/store" method="post">
